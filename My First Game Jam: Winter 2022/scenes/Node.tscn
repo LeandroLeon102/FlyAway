@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/mapGenerator.gd" type="Script" id=1]
+[ext_resource path="res://scr/tileset_grass_green.tres" type="TileSet" id=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Camera2D
+
+var zoom_sensibility = 0.05
+var vel = 15
+
+
+# Called when the node enters the scene tree for the first time.
+func _physics_process(delta):
+	if Input.is_action_just_released(\"wheel_up\"):
+		zoom += Vector2(zoom_sensibility,zoom_sensibility)	
+	if Input.is_action_just_released(\"wheel_down\"):
+		zoom -= Vector2(zoom_sensibility, zoom_sensibility)
+		
+	if Input.is_key_pressed(KEY_D):
+		position.x += vel
+	if Input.is_key_pressed(KEY_A):
+		position.x -= vel
+	if Input.is_key_pressed(KEY_S):
+		position.y += vel
+	if Input.is_key_pressed(KEY_W):
+		position.y -= vel
+"
+
+[node name="Node" type="Node"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 16, 16 )
+cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+format = 1
+
+[node name="Node" type="Node" parent="TileMap"]
+script = ExtResource( 1 )
+random_size = true
+size_limits = [ Vector2( 64, 37 ), Vector2( 128, 74 ) ]
+random_seed_generation = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+script = SubResource( 1 )
