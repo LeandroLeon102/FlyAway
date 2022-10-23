@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/ES_Deep Blue Delta Sinus - Ookean.mp3-f51fa84fe2edbded873700b1a2e72eb2.mp3str"
+
+[deps]
+
+source_file="res://scr/sound/ES_Deep Blue Delta Sinus - Ookean.mp3"
+dest_files=[ "res://.import/ES_Deep Blue Delta Sinus - Ookean.mp3-f51fa84fe2edbded873700b1a2e72eb2.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

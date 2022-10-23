@@ -1,0 +1,135 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://tileset_grass_green.png" type="Texture" id=1]
+[ext_resource path="res://scripts/TrashCans/PlasticTrashcan.gd" type="Script" id=2]
+[ext_resource path="res://scripts/TrashCans/PaperTrashcan.gd" type="Script" id=3]
+[ext_resource path="res://scripts/TrashCans/GlassTrashcan.gd" type="Script" id=4]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 13.0
+height = 15.0
+
+[sub_resource type="Animation" id=2]
+resource_name = "idle"
+length = 1.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("GlassTrashcan/icon:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -30 ), Vector2( 0, -37 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PaperTrashcan/icon:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -30 ), Vector2( 0, -37 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("PlasticTrashcan/icon:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -30 ), Vector2( 0, -37 ) ]
+}
+
+[node name="TrashCans" type="Node2D"]
+
+[node name="PlasticTrashcan" type="Area2D" parent="."]
+position = Vector2( -26, 0 )
+collision_layer = 4
+collision_mask = 3
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlasticTrashcan"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="PlasticTrashcan"]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 212, 1, 20, 33 )
+
+[node name="icon" type="Sprite" parent="PlasticTrashcan"]
+self_modulate = Color( 1, 1, 1, 0.313726 )
+position = Vector2( 0, -35.6241 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 137, 52, 16, 16 )
+
+[node name="PaperTrashcan" type="Area2D" parent="."]
+position = Vector2( 26, 0 )
+collision_layer = 4
+collision_mask = 3
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PaperTrashcan"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="PaperTrashcan"]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 246, 1, 20, 33 )
+
+[node name="icon" type="Sprite" parent="PaperTrashcan"]
+self_modulate = Color( 1, 1, 1, 0.313726 )
+position = Vector2( 0, -35.6241 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 120, 52, 16, 16 )
+
+[node name="GlassTrashcan" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GlassTrashcan"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="GlassTrashcan"]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 178, 1, 20, 33 )
+
+[node name="icon" type="Sprite" parent="GlassTrashcan"]
+self_modulate = Color( 1, 1, 1, 0.313726 )
+position = Vector2( 0, -35.6241 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 137, 69, 15, 16 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+anims/idle = SubResource( 2 )
+
+[connection signal="body_entered" from="PlasticTrashcan" to="PlasticTrashcan" method="_on_PlasticTrashcan_body_entered"]
+[connection signal="body_exited" from="PlasticTrashcan" to="PlasticTrashcan" method="_on_PlasticTrashcan_body_exited"]
+[connection signal="body_entered" from="PaperTrashcan" to="PaperTrashcan" method="_on_PaperTrashcan_body_entered"]
+[connection signal="body_exited" from="PaperTrashcan" to="PaperTrashcan" method="_on_PaperTrashcan_body_exited"]
+[connection signal="body_entered" from="GlassTrashcan" to="GlassTrashcan" method="_on_GlassTrashcan_body_entered"]
+[connection signal="body_exited" from="GlassTrashcan" to="GlassTrashcan" method="_on_GlassTrashcan_body_exited"]

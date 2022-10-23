@@ -1,0 +1,174 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scr/tileset_grass_green.tres" type="TileSet" id=2]
+[ext_resource path="res://tileset_grass_green.png" type="Texture" id=3]
+[ext_resource path="res://scr/new_dynamicfont.tres" type="DynamicFont" id=4]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 13.0
+height = 15.0
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 3 )
+region = Rect2( 120, 52, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 3 )
+region = Rect2( 136, 51, 18, 18 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 3 )
+region = Rect2( 136, 68, 18, 18 )
+
+[node name="MainGame" type="Node"]
+
+[node name="Node" type="Node" parent="."]
+
+[node name="TileMap" type="TileMap" parent="Node"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 16, 16 )
+cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+format = 1
+tile_data = PoolIntArray( -393225, 0, 3, -327689, 0, 65539, -327684, 0, 3, -262153, 0, 65539, -262148, 0, 65539, -262145, 1, 65536, -327665, 1, 131072, -196617, 0, 65541, -196616, 0, 131077, -196615, 0, 131077, -196614, 0, 131077, -196613, 0, 131077, -196612, 0, 393216, -196611, 0, 131077, -196610, 0, 131077, -196609, 0, 327683, -262144, 0, 1, -262143, 0, 1, -262142, 0, 327682, -262141, 0, 131078, -262140, 1, 0, -262139, 1, 1, -262138, 1, 1, -262137, 1, 1, -262136, 1, 1, -262135, 1, 1, -262134, 1, 1, -262133, 1, 1, -262132, 1, 1, -262131, 1, 2, -262130, 0, 0, -262129, 0, 2, -131073, 0, 65536, -196608, 0, 65537, -196607, 0, 65537, -196606, 0, 65538, -196595, 0, 0, -196594, 0, 262145, -196593, 0, 65538, -65537, 0, 65536, -131072, 0, 65537, -131071, 0, 196608, -131070, 0, 131074, -131060, 0, 0, -131059, 0, 262145, -131058, 0, 65537, -131057, 0, 65538, -1, 0, 65536, -65536, 0, 196608, -65535, 0, 131074, -65525, 0, 0, -65524, 0, 262145, -65523, 0, 65537, -65522, 0, 65537, -65521, 0, 65538, 65535, 0, 65536, 0, 0, 65538, 3, 1, 65536, 5, 1, 131072, 10, 0, 0, 11, 0, 262145, 12, 0, 65537, 13, 0, 65537, 14, 0, 65537, 15, 0, 65538, 131071, 0, 65536, 65536, 0, 262144, 65537, 0, 1, 65538, 0, 1, 65539, 0, 1, 65540, 0, 1, 65541, 0, 1, 65542, 0, 1, 65543, 0, 1, 65544, 0, 1, 65545, 0, 1, 65546, 0, 262145, 65547, 0, 65537, 65548, 0, 65537, 65549, 0, 65537, 65550, 0, 196608, 65551, 0, 131074, 196607, 0, 131072, 131072, 0, 131073, 131073, 0, 131073, 131074, 0, 131073, 131075, 0, 131073, 131076, 0, 131073, 131077, 0, 131073, 131078, 0, 131073, 131079, 0, 131073, 131080, 0, 131073, 131081, 0, 131073, 131082, 0, 131073, 131083, 0, 131073, 131084, 0, 131073, 131085, 0, 131073, 131086, 0, 131074 )
+
+[node name="KinematicBody2D" parent="Node" instance=ExtResource( 1 )]
+position = Vector2( 80, -25 )
+
+[node name="GlassTrashcan3" type="Area2D" parent="Node"]
+position = Vector2( 18, -80 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/GlassTrashcan3"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Node/GlassTrashcan3"]
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 178, 1, 20, 33 )
+
+[node name="PaperTrashcan" type="Area2D" parent="Node"]
+position = Vector2( 44, -80 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/PaperTrashcan"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Node/PaperTrashcan"]
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 246, 1, 20, 33 )
+
+[node name="MetalTrashcan" type="Area2D" parent="Node"]
+position = Vector2( -8, -80 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/MetalTrashcan"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Node/MetalTrashcan"]
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 212, 1, 20, 33 )
+
+[node name="Camera2D" type="Camera2D" parent="Node"]
+position = Vector2( 80, -25 )
+current = true
+zoom = Vector2( 0.3, 0.3 )
+editor_draw_limits = true
+editor_draw_drag_margin = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+scale = Vector2( 3, 3 )
+transform = Transform2D( 3, 0, 0, 3, 0, 0 )
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
+margin_right = 62.0
+margin_bottom = 54.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_constants/separation = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
+margin_right = 60.0
+margin_bottom = 16.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer2"]
+margin_right = 16.0
+margin_bottom = 16.0
+texture = SubResource( 2 )
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer2"]
+margin_left = 20.0
+margin_right = 60.0
+margin_bottom = 12.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.0
+custom_fonts/font = ExtResource( 4 )
+text = "10/10"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
+margin_top = 17.0
+margin_right = 62.0
+margin_bottom = 35.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer3"]
+margin_right = 18.0
+margin_bottom = 18.0
+texture = SubResource( 3 )
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer3"]
+margin_left = 22.0
+margin_right = 62.0
+margin_bottom = 12.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.0
+custom_fonts/font = ExtResource( 4 )
+text = "10/10"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
+margin_top = 36.0
+margin_right = 62.0
+margin_bottom = 54.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
+margin_right = 18.0
+margin_bottom = 18.0
+texture = SubResource( 4 )
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
+margin_left = 22.0
+margin_right = 62.0
+margin_bottom = 12.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.0
+custom_fonts/font = ExtResource( 4 )
+text = "10/10"
